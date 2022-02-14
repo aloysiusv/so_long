@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   3_map_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 18:09:51 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/13 18:10:24 by lrandria         ###   ########.fr       */
+/*   Created: 2022/02/14 16:34:22 by lrandria          #+#    #+#             */
+/*   Updated: 2022/02/14 16:34:38 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,5 @@ void	print_map(char **map, size_t width, size_t height)
 		}
 		printf("\n");
 		i++;
-	}
-}
-
-void	free_all(t_game *game)
-{
-	if (game->mlx_img != NULL)
-		mlx_destroy_image(game->mlx, game->mlx_img);
-	if (game->mlx_win != NULL)
-		mlx_destroy_window(game->mlx, game->mlx_win);
-	if (game->mlx != NULL)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
 	}
 }

@@ -1,41 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_errors.c                                       :+:      :+:    :+:   */
+/*   map_errors_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:41:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/13 17:40:47 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:05:45 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-static void	init_struct(t_game *game)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < NB_TXTR)
-		game->textures[i++] = NULL;
-	game->mlx = NULL;
-	game->mlx_win = NULL;
-	game->mlx_img = NULL;
-	game->map = NULL;
-	game->width = 0;
-	game->height = 0;
-	// game->exits = NULL;
-	// game->rings = NULL;
-	game->moves = 0;
-	game->nb_rings = 0;
-	game->nb_exits = 0;
-	game->taken = 0;
-	game->move_up = 0;
-	game->move_down = 0;
-	game->move_left = 0;
-	game->move_right = 0;
-}
+#include "so_long_bonus.h"
 
 static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
 {
@@ -44,10 +19,22 @@ static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
 		if (game->map[i][j] != '1')
 			return (-1);
 	}
-	else if (game->map[i][j] == 'P')
+	if (game->map[i][j] == 'P')
+	{
+		game->frodo_y = i;
+		game->frodo_x = j;
+		game->map[i][j] = '0';
 		game->nb_player++;
+	}
+	else if (game->map[i][j] == 'G')
+	{
+		game->gollum_y = i;
+		game->gollum_x = j;
+		game->map[i][j] = '0';
+		game->nb_player++;
+	}
 	else if (game->map[i][j] == 'C')
-		game->nb_rings++;
+		game->nb_collects++;
 	else if (game->map[i][j] == 'E')
 		game->nb_exits++;
 	else if (game->map[i][j] != '0' && game->map[i][j] != '1')
@@ -72,7 +59,7 @@ static int	check_map(t_game *game)
 		}
 		i++;
 	}
-	if (game->nb_rings < 1 || game->nb_exits < 1 || game->nb_player != 1)
+	if (game->nb_collects < 1 || game->nb_exits < 1 || game->nb_player < 1)
 		return (-1);
 	return (0);
 }
@@ -98,12 +85,20 @@ static int	check_extension(char *ext, char *filename)
 
 int	is_map_valid(t_game *game, char *filename)
 {
-	init_struct(game);
 	if (check_extension(".ber", filename) == -1)
+	{
+		printf("Wrong ext.\n");
 		return (-1);
+	}
 	if (get_map(game, filename) == -1)
+	{
+		printf("Unable to get map.\n");
 		return (-1);
+	}
 	if (check_map(game) == -1)
+	{
+		printf("Problem in map.\n");
 		return (-1);
+	}
 	return (0);
 }

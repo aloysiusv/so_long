@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_init.c                                        :+:      :+:    :+:   */
+/*   4_game_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:37:41 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/13 18:30:41 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:50:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	walls_exit_ring(t_game *game)
+static int	textures_inanimate(t_game *game)
 {
-	const char	*wall_txt = "./assets/awesome_wall.xpm";
-	const char	*exit_txt = "./assets/awesome_door.xpm";
-	const char	*ring_txt = "./assets/collectible_1.xpm";
+	const char	*out_wall_txt = "./assets/awesome_wall.xpm";
+	const char	*in_wall_txt = "./assets/awesome_ground.xpm";
+	const char	*sword_txt = "./assets/collectible_1.xpm";
 	int			img_width;
 	int			img_height;
 	
 	img_width = 40;
 	img_height = 40;
-	game->textures[WALL] = mlx_xpm_file_to_image(game->mlx, (char *)wall_txt, &img_width, &img_height);
-	if (game->textures[WALL] == NULL)
+	game->textures[WALL_1] = mlx_xpm_file_to_image(game->mlx, (char *)out_wall_txt, &img_width, &img_height);
+	if (game->textures[WALL_1] == NULL)
 		return (-1);
-	game->textures[EXIT] = mlx_xpm_file_to_image(game->mlx, (char *)exit_txt, &img_width, &img_height);
-	if (game->textures[EXIT] == NULL)
+	game->textures[WALL_2] = mlx_xpm_file_to_image(game->mlx, (char *)in_wall_txt, &img_width, &img_height);
+	if (game->textures[WALL_2] == NULL)
 		return (-1);
-	game->textures[RING] = mlx_xpm_file_to_image(game->mlx, (char *)ring_txt, &img_width, &img_height);
-	if (game->textures[RING] == NULL)
+	game->textures[SWORD] = mlx_xpm_file_to_image(game->mlx, (char *)sword_txt, &img_width, &img_height);
+	if (game->textures[SWORD] == NULL)
 		return (-1);
 	return (0);
 }
@@ -37,20 +37,20 @@ static int	walls_exit_ring(t_game *game)
 static int	load_textures(t_game *game)
 {
 	const char	*player_txt = "./assets/awesome_player.xpm";
-	// const char	*enemy_txt = "./assets/awesome_enemy.xpm";
+	const char	*exit_txt = "./assets/awesome_door.xpm";
 	int			img_width;
 	int			img_height;
 	
 	img_width = 40;
 	img_height = 40;
-	if (walls_exit_ring(game) == -1)
+	if (textures_inanimate(game) == -1)
 		return (-1);
 	game->textures[FRODO] = mlx_xpm_file_to_image(game->mlx, (char *)player_txt, &img_width, &img_height);
 	if (game->textures[FRODO] == NULL)
 		return (-1);
-	// game->textures[ENEMY] = mlx_xpm_file_to_image(game->mlx, (char *)enemy_txt, IMG_W, IMG_H);
-	// if (game->textures[ENEMY] == NULL)
-	// 	return (-1);
+	game->textures[EXIT] = mlx_xpm_file_to_image(game->mlx, (char *)exit_txt, &img_width, &img_height);
+	if (game->textures[EXIT] == NULL)
+		return (-1);
 	return (0);
 }
 
