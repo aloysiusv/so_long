@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 17:15:30 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:38:19 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ enum	e_textures
 	NB_TXTR
 };
 
-typedef struct s_pos
-{
-	int			x;
-	int			y;
-}				t_pos;
-
 typedef struct s_game
 {
 	void		*mlx;
@@ -82,7 +76,7 @@ void			update_frodo_state(t_game *game);
 void			update_moves(t_game *game);
 
 void			draw_texture(t_img *mlx_img, int x, int y, t_img *texture);
-void			draw_square(t_img *mlx_img, int x, int y, int size, int colour);
+void			draw_canvas(t_img *mlx_img, int x, int y, int colour);
 
 void			free_all(t_game *game);
 

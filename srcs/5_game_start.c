@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 17:03:19 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:19:20 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static int	ft_key_release(int keycode, t_game *game)
 
 static int	render_next_frame(t_game *game)
 {
-	static int i = 0;
-	
+	static int	i = 0;
+
 	if (i++ % 5 == 0)
 		update_moves(game);
 	update_frodo_state(game);

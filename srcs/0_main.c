@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 17:08:55 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:18:55 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	init_struct(t_game *game)
 	game->map = NULL;
 	game->width = 0;
 	game->height = 0;
-	// game->exits = NULL;
-	// game->rings = NULL;
 	game->moves = 0;
 	game->nb_player = 0;
 	game->nb_swords = 0;
@@ -44,17 +42,16 @@ int	main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-        ft_putstr_fd("Error\nInvalid arguments\n", 2);
-        return (1);
+		ft_putstr_fd("Error\nInvalid arguments\n", 2);
+		return (1);
 	}
 	init_struct(&game);
 	if (is_map_valid(&game, av[1]) == -1)
 	{
-        ft_putstr_fd("Error\nInvalid map\n", 2);
-        free_all(&game);
+		ft_putstr_fd("Error\nInvalid map\n", 2);
+		free_all(&game);
 		return (1);
 	}
-	print_map(game.map, game.width, game.height);
 	if (init_game(&game) == -1)
 	{	
 		free_all(&game);
