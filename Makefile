@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/14 17:10:51 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/16 18:07:23 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS		=	-Wall -Wextra -Werror
 INC			=	-I ./
 LIBS		=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 OBJS		=	$(SRCS:.c=.o)
-HDR			=	so_long.h
+HDR			=	./includes/so_long.h
 S			=	./srcs/
 SRCS		=	$(S)0_main.c \
 				$(S)1_map_check.c $(S)2_map_fill.c $(S)3_map_print.c\

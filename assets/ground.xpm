@@ -1,5 +1,5 @@
 /* XPM */
-static char * awesome_ground_xpm[] = {
+static char * ground_xpm[] = {
 "40 40 1030 2",
 "  	c #3B3137",
 ". 	c #65515C",

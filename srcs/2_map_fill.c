@@ -6,18 +6,18 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:36:36 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 20:30:10 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "includes/so_long.h"
 
 static int	count_lines(char *filename)
 {
 	char	*line;
 	int		nb_lines;
 	int		fd;
-	
+
 	line = NULL;
 	nb_lines = 0;
 	fd = open(filename, O_RDONLY);
@@ -47,7 +47,7 @@ static void	init_map(t_game *game)
 static int	fill_map(t_game *game, int fd, int ret, char *filename)
 {
 	size_t	i;
-	
+
 	i = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)

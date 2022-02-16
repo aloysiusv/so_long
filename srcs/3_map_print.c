@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:34:22 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 16:34:38 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "includes/so_long.h"
 
 void	print_map(char **map, size_t width, size_t height)
 {

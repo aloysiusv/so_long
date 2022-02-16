@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:41:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 20:22:32 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "includes/so_long.h"
 
 static int	borders_or_chars_and_keep_count(t_game *game, int i, int j)
 {
@@ -60,7 +60,7 @@ static int	check_map(t_game *game)
 static int	check_extension(char *ext, char *filename)
 {
 	size_t	i;
-	size_t  j;
+	size_t	j;
 
 	if (ft_strlen(filename) < 5)
 		return (-1);

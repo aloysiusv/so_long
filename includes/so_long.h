@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 20:38:19 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:14:50 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@
 
 # define IMG_W		40
 # define IMG_H		40
-
-# define CODE_KEY_PRESS_MASK		2, 1L << 0
-# define CODE_KEY_RELEASE_MASK		3, 1L << 1
-# define CODE_DESTROY_NOTIFY_MASK	17, 1L << 17
 
 enum	e_textures
 {

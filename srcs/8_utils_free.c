@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 18:09:51 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 20:30:25 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "includes/so_long.h"
 
 void	free_all(t_game *game)
 {

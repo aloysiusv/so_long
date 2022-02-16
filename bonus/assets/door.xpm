@@ -1,5 +1,5 @@
 /* XPM */
-static char * awesome_door_xpm[] = {
+static char * door_xpm[] = {
 "35 40 1147 2",
 "  	c None",
 ". 	c #A1ABAF",

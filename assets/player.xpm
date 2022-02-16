@@ -1,5 +1,5 @@
 /* XPM */
-static char * awesome_player_xpm[] = {
+static char * player_xpm[] = {
 "40 40 229 2",
 "  	c None",
 ". 	c #BB7649",

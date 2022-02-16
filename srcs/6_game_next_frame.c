@@ -6,16 +6,16 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:46:01 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 20:38:39 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "includes/so_long.h"
 
 void	print_moves(t_game *game)
 {
-	if (game->move_up == 1 || game->move_down == 1 || game->move_left == 1 ||
-		game->move_right == 1)
+	if (game->move_up == 1 || game->move_down == 1 || game->move_left == 1
+		|| game->move_right == 1)
 	{
 		game->moves++;
 		ft_putstr_fd("Moves = ", 1);
@@ -66,7 +66,8 @@ void	update_frodo_state(t_game *game)
 static void	display_textures(t_game *game, int i, int j)
 {
 	if (game->frodo_x == j && game->frodo_y == i)
-		draw_texture(game->mlx_img, j * IMG_W, i * IMG_H, game->textures[FRODO]);
+		draw_texture(game->mlx_img, j * IMG_W,
+			i * IMG_H, game->textures[FRODO]);
 	else if (game->map[i][j] == '1')
 	{
 		if (i == 0 || i == game->height - 1 || j == 0 || j == game->width - 1)
@@ -77,10 +78,12 @@ static void	display_textures(t_game *game, int i, int j)
 				j * IMG_W, i * IMG_H, game->textures[WALL_2]);
 	}
 	else if (game->map[i][j] == 'E')
-		draw_texture(game->mlx_img, j * IMG_W, i * IMG_H, game->textures[EXIT]);
+		draw_texture(game->mlx_img, j * IMG_W,
+			i * IMG_H, game->textures[EXIT]);
 	else if (game->map[i][j] == 'C')
-		draw_texture(game->mlx_img, j * IMG_W, i * IMG_H, game->textures[SWORD]);
-	else 
+		draw_texture(game->mlx_img, j * IMG_W,
+			i * IMG_H, game->textures[SWORD]);
+	else
 		draw_canvas(game->mlx_img, j * IMG_W, i * IMG_H, 0x00000000);
 }
 

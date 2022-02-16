@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 20:19:20 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "includes/so_long.h"
 
 static int	ft_key_press(int keycode, t_game *game)
 {
@@ -53,9 +53,9 @@ static int	render_next_frame(t_game *game)
 
 void	launch_game(t_game *game)
 {
-	mlx_hook(game->mlx_win, CODE_KEY_PRESS_MASK, ft_key_press, game);
-	mlx_hook(game->mlx_win, CODE_KEY_RELEASE_MASK, ft_key_release, game);
-	mlx_hook(game->mlx_win, CODE_DESTROY_NOTIFY_MASK, mlx_loop_end, game->mlx);
+	mlx_hook(game->mlx_win, 2, 1L << 0, ft_key_press, game);
+	mlx_hook(game->mlx_win, 3, 1L << 1, ft_key_release, game);
+	mlx_hook(game->mlx_win, 17, 1L << 17, mlx_loop_end, game->mlx);
 	mlx_loop_hook(game->mlx, render_next_frame, game);
 	mlx_do_key_autorepeatoff(game->mlx);
 	mlx_loop(game->mlx);
