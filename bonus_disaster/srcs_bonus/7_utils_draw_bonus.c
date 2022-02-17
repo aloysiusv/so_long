@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:25:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 21:53:11 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:57:18 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	draw_canvas(t_img *mlx_img, int x, int y, int size, int colour)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < size)
 	{
+		j = 0;
 		while (j < size)
 		{
 			put_pixels(mlx_img, x + j, y + i, colour);
@@ -52,9 +52,9 @@ void	draw_texture(t_img *mlx_img, int x, int y, t_img *texture)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < 40)
 	{
+		j = 0;
 		while (j < 40)
 		{
 			put_pixels(mlx_img, x + j, y + i, get_pixel(texture, j, i));

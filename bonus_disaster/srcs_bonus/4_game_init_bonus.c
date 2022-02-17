@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:37:41 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 22:03:41 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:51:00 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int	textures_inanimate(t_game *game)
 {
-	const char	*out_wall_txt = "./assets_bonus/wall.xpm";
-	const char	*in_wall_txt = "./assets_bonus/ground.xpm";
+	const char	*out_wall_txt = "./assets_bonus/wall_1.xpm";
+	const char	*in_wall_txt = "./assets_bonus/wall_2.xpm";
 	const char	*sword_txt = "./assets_bonus/sword.xpm";
 	int			img_width;
 	int			img_height;
 
-	img_width = 40;
-	img_height = 40;
+	img_width = IMG_W;
+	img_height = IMG_H;
 	game->textures[WALL_1] = mlx_xpm_file_to_image(game->mlx,
 			(char *)out_wall_txt, &img_width, &img_height);
 	if (game->textures[WALL_1] == NULL)
@@ -47,8 +47,8 @@ static int	load_textures(t_game *game)
 	int			img_width;
 	int			img_height;
 
-	img_width = 40;
-	img_height = 40;
+	img_width = IMG_W;
+	img_height = IMG_H;
 	if (textures_inanimate(game) == -1)
 		return (-1);
 	game->textures[FRODO] = mlx_xpm_file_to_image(game->mlx,
@@ -76,8 +76,6 @@ static int	load_textures(t_game *game)
 
 int	init_game(t_game *game)
 {
-		printf("hello");
-	
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 	{

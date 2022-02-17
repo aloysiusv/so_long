@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 21:53:11 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:57:55 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
 		if (game->map[i][j] != '1')
 			return (-1);
 	}
-	if (game->map[i][j] == 'P')
+	else if (game->map[i][j] == 'P')
 	{
 		game->frodo_y = i;
 		game->frodo_x = j;
@@ -35,10 +35,10 @@ static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
 	}
 	else if (game->map[i][j] == 'X')
 	{
+		game->orc_dir = 0;
 		game->orc_y = i;
 		game->orc_x = j;
 		game->map[i][j] = '0';
-		game->nb_players++;
 	}
 	else if (game->map[i][j] == 'C')
 		game->nb_swords++;

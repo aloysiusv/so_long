@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 22:03:45 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:56:46 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	init_struct(t_game *game)
 	game->width = 0;
 	game->height = 0;
 	game->orc_dir = -1;
+	game->orc_x = 0;
+	game->orc_y = 0;
 	game->moves = 0;
 	game->nb_players = 0;
 	game->nb_swords = 0;
