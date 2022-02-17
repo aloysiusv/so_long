@@ -6,21 +6,29 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:46:01 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:38:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-void	print_moves(t_game *game)
+static void	update_moves2(t_game *game)
 {
-	if (game->move_up == 1 || game->move_down == 1 || game->move_left == 1
-		|| game->move_right == 1)
+	if (game->move_left == 1)
 	{
-		game->moves++;
-		ft_putstr_fd("Moves = ", 1);
-		ft_putnbr_fd(game->moves, 1);
-		ft_putchar_fd('\n', 1);
+		if (game->map[game->frodo_y][game->frodo_x - 1] != '1')
+		{
+			game->frodo_x -= 1;
+			game->moves++;
+		}
+	}
+	else if (game->move_right == 1)
+	{
+		if (game->map[game->frodo_y][game->frodo_x + 1] != '1')
+		{
+			game->frodo_x += 1;
+			game->moves++;
+		}	
 	}
 }
 
@@ -29,24 +37,20 @@ void	update_moves(t_game *game)
 	if (game->move_up == 1)
 	{
 		if (game->map[game->frodo_y - 1][game->frodo_x] != '1')
+		{
 			game->frodo_y -= 1;
+			game->moves++;
+		}
 	}
 	else if (game->move_down == 1)
 	{
 		if (game->map[game->frodo_y + 1][game->frodo_x] != '1')
+		{
 			game->frodo_y += 1;
+			game->moves++;
+		}
 	}
-	else if (game->move_left == 1)
-	{
-		if (game->map[game->frodo_y][game->frodo_x - 1] != '1')
-			game->frodo_x -= 1;
-	}
-	else if (game->move_right == 1)
-	{
-		if (game->map[game->frodo_y][game->frodo_x + 1] != '1')
-			game->frodo_x += 1;
-	}
-	print_moves(game);
+	update_moves2(game);
 }
 
 void	update_frodo_state(t_game *game)

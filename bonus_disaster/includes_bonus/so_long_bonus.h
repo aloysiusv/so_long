@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 14:49:52 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 21:58:03 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,16 @@
 # define IMG_W		40
 # define IMG_H		40
 
-# define CODE_KEY_PRESS_MASK		2, 1L << 0
-# define CODE_KEY_RELEASE_MASK		3, 1L << 1
-# define CODE_DESTROY_NOTIFY_MASK	17, 1L << 17
-
 enum	e_textures
 {
 	WALL_1,
 	WALL_2,
 	EXIT,
-	COLLECTS,
+	SWORD,
 	FRODO,
 	GOLLUM,
+	ORC_RIGHT,
+	ORC_LEFT,
 	NB_TXTR
 };
 
@@ -63,19 +61,24 @@ typedef struct s_game
 	int			frodo_y;
 	int			gollum_x;
 	int			gollum_y;
+	int			orc_x;
+	int			orc_y;
+	int			orc_dir;		
 	size_t		moves;
-	size_t		nb_player;
-	size_t		nb_collects;
+	size_t		nb_players;
+	size_t		nb_swords;
 	size_t		nb_exits;
 	size_t		taken;			
 	int			frodo_move_up;
 	int			frodo_move_down;
 	int			frodo_move_left;
 	int			frodo_move_right;
+	int			frodo_moves;
 	int			gollum_move_up;
 	int			gollum_move_down;
 	int			gollum_move_left;
 	int			gollum_move_right;
+	int			gollum_moves;
 }				t_game;
 
 
@@ -87,11 +90,14 @@ int		init_game(t_game *game);
 void	launch_game(t_game *game);
 void	display_frame(t_game *game);
 
-int		load_textures(t_game *game);
+void	update_frodo_moves(t_game *game);
+void	update_gollum_moves(t_game *game);
+void	update_players_state(t_game *game);
+void	print_moves(t_game *game);
+
+
 void	draw_texture(t_img *mlx_img, int x, int y, t_img *texture);
 void	draw_canvas(t_img *mlx_img, int x, int y, int size, int colour);
-
-
 
 void	free_all(t_game *game);
 

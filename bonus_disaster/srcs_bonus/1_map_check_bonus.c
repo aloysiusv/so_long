@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_errors_bonus.c                                 :+:      :+:    :+:   */
+/*   1_map_check_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 15:41:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 15:05:45 by lrandria         ###   ########.fr       */
+/*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
+/*   Updated: 2022/02/16 21:53:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "includes_bonus/so_long_bonus.h"
 
 static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
 {
@@ -24,17 +24,24 @@ static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
 		game->frodo_y = i;
 		game->frodo_x = j;
 		game->map[i][j] = '0';
-		game->nb_player++;
+		game->nb_players++;
 	}
 	else if (game->map[i][j] == 'G')
 	{
 		game->gollum_y = i;
 		game->gollum_x = j;
 		game->map[i][j] = '0';
-		game->nb_player++;
+		game->nb_players++;
+	}
+	else if (game->map[i][j] == 'X')
+	{
+		game->orc_y = i;
+		game->orc_x = j;
+		game->map[i][j] = '0';
+		game->nb_players++;
 	}
 	else if (game->map[i][j] == 'C')
-		game->nb_collects++;
+		game->nb_swords++;
 	else if (game->map[i][j] == 'E')
 		game->nb_exits++;
 	else if (game->map[i][j] != '0' && game->map[i][j] != '1')
@@ -59,7 +66,7 @@ static int	check_map(t_game *game)
 		}
 		i++;
 	}
-	if (game->nb_collects < 1 || game->nb_exits < 1 || game->nb_player < 1)
+	if (game->nb_swords < 1 || game->nb_exits < 1 || game->nb_players < 1)
 		return (-1);
 	return (0);
 }

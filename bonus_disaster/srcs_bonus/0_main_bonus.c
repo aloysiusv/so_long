@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   0_main_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 14:18:41 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 22:03:45 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "includes_bonus/so_long_bonus.h"
 
 static void	init_struct(t_game *game)
 {
@@ -25,19 +25,22 @@ static void	init_struct(t_game *game)
 	game->map = NULL;
 	game->width = 0;
 	game->height = 0;
+	game->orc_dir = -1;
 	game->moves = 0;
-	game->nb_player = 0;
-	game->nb_collects = 0;
+	game->nb_players = 0;
+	game->nb_swords = 0;
 	game->nb_exits = 0;
 	game->taken = 0;
 	game->frodo_move_up = 0;
 	game->frodo_move_down = 0;
 	game->frodo_move_left = 0;
 	game->frodo_move_right = 0;
+	game->frodo_moves = 0;
 	game->gollum_move_up = 0;
 	game->gollum_move_down = 0;
 	game->gollum_move_left = 0;
 	game->gollum_move_right = 0;
+	game->gollum_moves = 0;
 }
 
 int	main(int ac, char *av[])

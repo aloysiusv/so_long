@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:33:31 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,23 @@ static int	ft_key_release(int keycode, t_game *game)
 	return (0);
 }
 
+void	print_moves(t_game *game)
+{
+	if (game->move_up == 1 || game->move_down == 1
+		|| game->move_left == 1 || game->move_right == 1)
+	{
+		printf("Moves = %zu\r", game->moves);
+		fflush(stdout);
+	}
+}
+
 static int	render_next_frame(t_game *game)
 {
 	static int	i = 0;
 
 	if (i++ % 5 == 0)
 		update_moves(game);
+	print_moves(game);
 	update_frodo_state(game);
 	display_frame(game);
 	return (0);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing_bonus.c                                :+:      :+:    :+:   */
+/*   2_map_fill_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:36:36 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 04:30:53 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 21:53:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "includes_bonus/so_long_bonus.h"
 
 static int	count_lines(char *filename)
 {

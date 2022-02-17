@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_moves_bonus.c                                 :+:      :+:    :+:   */
+/*   5_game_start_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/14 16:27:34 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/16 21:58:30 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "includes_bonus/so_long_bonus.h"
 
 static int	ft_key_press(int keycode, t_game *game)
 {
@@ -56,69 +56,34 @@ static int	ft_key_release(int keycode, t_game *game)
 	return (0);
 }
 
-static void	update_frodo_moves(t_game *game)
+static void	make_orc_moves(t_game *game)
 {
-	if (game->frodo_move_up == 1)
-	{
-		if (game->map[game->frodo_y - 1][game->frodo_x] != '1')
-			game->frodo_y -= 1;
+    while (game->map[game->orc_y][game->orc_x + 1] != '1') 
+    {
+		game->orc_dir = 0;
+		game->orc_x++;
 	}
-	else if (game->frodo_move_down == 1)
-	{
-		if (game->map[game->frodo_y + 1][game->frodo_x] != '1')
-			game->frodo_y += 1;
-	}
-	else if (game->frodo_move_left == 1)
-	{
-		if (game->map[game->frodo_y][game->frodo_x - 1] != '1')
-			game->frodo_x -= 1;
-	}
-	else if (game->frodo_move_right == 1)
-	{
-		if (game->map[game->frodo_y][game->frodo_x + 1] != '1')
-			game->frodo_x += 1;
+    if (game->map[game->orc_y][game->orc_x] == game->width - 1)
+    {
+		game->orc_dir = 1;
+		while (game->map[game->orc_y][game->orc_x -1] != '1') 
+        	game->orc_x--;
 	}
 }
 
-static void	update_gollum_moves(t_game *game)
+static int	game_over(t_game *game)
 {
-	if (game->gollum_move_up == 1)
-	{
-		if (game->map[game->gollum_y - 1][game->gollum_x] != '1')
-			game->gollum_y -= 1;
-	}
-	else if (game->gollum_move_down == 1)
-	{
-		if (game->map[game->gollum_y + 1][game->gollum_x] != '1')
-			game->gollum_y += 1;
-	}
-	else if (game->gollum_move_left == 1)
-	{
-		if (game->map[game->gollum_y][game->gollum_x - 1] != '1')
-			game->gollum_x -= 1;
-	}
-	else if (game->gollum_move_right == 1)
-	{
-		if (game->map[game->gollum_y][game->gollum_x + 1] != '1')
-			game->gollum_x += 1;
-	}
-}
-
-void	update_players_state(t_game *game)
-{
-	if (game->map[game->frodo_y][game->frodo_x] == 'C' || 
-		game->map[game->gollum_y][game->gollum_x] == 'C')
-	{
-		game->taken++;
-		game->map[game->frodo_y][game->frodo_x] = '0';
-		game->map[game->gollum_y][game->gollum_x] = '0';
-	}
-	else if (game->map[game->frodo_y][game->frodo_x] == 'E' ||
-		game->map[game->gollum_y][game->gollum_x] == 'E')
-	{
-		if (game->taken == game->nb_collects)
-			mlx_loop_end(game->mlx);
-	}
+	if (game->map[game->frodo_y][game->frodo_x] 
+        == game->map[game->orc_y][game->orc_x - 1] || 
+		game->map[game->frodo_y][game->frodo_x] 
+        == game->map[game->orc_y][game->orc_x + 1] ||
+		game->map[game->gollum_y][game->gollum_x]
+        == game->map[game->orc_y][game->orc_x - 1] ||
+		game->map[game->gollum_y][game->gollum_x] 
+        == game->map[game->orc_y][game->orc_x + 1])
+        return (1);
+    else
+        return (0);
 }
 
 static int	render_next_frame(t_game *game)
@@ -129,6 +94,15 @@ static int	render_next_frame(t_game *game)
 	{
 		update_frodo_moves(game);
 		update_gollum_moves(game);
+        make_orc_moves(game);
+		if (game_over(game) == 1)
+		{
+            mlx_string_put(game->mlx, game->mlx_win,
+                game->height / 3, game->width / 3, 0xCC0000, "GAME OVER :(");
+            usleep(10000);
+            free_all(game);
+            exit(EXIT_SUCCESS);
+        }
 	}
 	update_players_state(game);
 	display_frame(game);
@@ -137,9 +111,9 @@ static int	render_next_frame(t_game *game)
 
 void	launch_game(t_game *game)
 {
-	mlx_hook(game->mlx_win, CODE_KEY_PRESS_MASK, ft_key_press, game);
-	mlx_hook(game->mlx_win, CODE_KEY_RELEASE_MASK, ft_key_release, game);
-	mlx_hook(game->mlx_win, CODE_DESTROY_NOTIFY_MASK, mlx_loop_end, game->mlx);
+	mlx_hook(game->mlx_win, 2, 1L << 0, ft_key_press, game);
+	mlx_hook(game->mlx_win, 3, 1L << 1, ft_key_release, game);
+	mlx_hook(game->mlx_win, 17, 1L << 17, mlx_loop_end, game->mlx);
 	mlx_loop_hook(game->mlx, render_next_frame, game);
 	mlx_do_key_autorepeatoff(game->mlx);
 	mlx_loop(game->mlx);
