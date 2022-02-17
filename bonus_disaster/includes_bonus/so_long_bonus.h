@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 21:58:03 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:31:55 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	display_frame(t_game *game);
 
 void	update_frodo_moves(t_game *game);
 void	update_gollum_moves(t_game *game);
+void	update_orc_moves(t_game *game);
 void	update_players_state(t_game *game);
 void	print_moves(t_game *game);
 

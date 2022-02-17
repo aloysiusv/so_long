@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:16:31 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/17 20:58:45 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:01:46 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,24 @@ void	update_gollum_moves(t_game *game)
 	}
 }
 
+void	update_orc_moves(t_game *game)
+{
+	if (game->orc_dir == 0)
+	{
+		if (game->map[game->orc_y][game->orc_x + 1] != '1') 
+			game->orc_x++;
+		else
+			game->orc_dir = 1;
+	}
+	else
+	{
+		if (game->map[game->orc_y][game->orc_x -1] != '1') 
+        	game->orc_x--;
+		else
+			game->orc_dir = 0;
+	}
+}
+
 void	update_players_state(t_game *game)
 {
 	if (game->map[game->frodo_y][game->frodo_x] == 'C' || 
@@ -141,4 +159,6 @@ void	display_frame(t_game *game)
 		i++;
 	}
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->mlx_img, 0, 0);
+	mlx_string_put(game->mlx, game->mlx_win, 200, 200, 0xCC0000, "FRODO MOVES = ");
+	mlx_string_put(game->mlx, game->mlx_win, 400, 400, 0xCC0000, "GOLLUM MOVES = ");
 }

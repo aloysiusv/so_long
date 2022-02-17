@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/17 19:53:09 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:32:45 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,6 @@ static int	ft_key_release(int keycode, t_game *game)
 	return (0);
 }
 
-// static void	make_orc_moves(t_game *game)
-// {
-//     while (game->map[game->orc_y][game->orc_x + 1] != '1') 
-//     {
-// 		game->orc_dir = 0;
-// 		game->orc_x++;
-// 	}
-//     if (game->map[game->orc_y][game->orc_x] == game->width - 1)
-//     {
-// 		game->orc_dir = 1;
-// 		while (game->map[game->orc_y][game->orc_x -1] != '1') 
-//         	game->orc_x--;
-// 	}
-// }
-
 // static int	game_over(t_game *game)
 // {
 // 	if (game->map[game->frodo_y][game->frodo_x] 
@@ -89,12 +74,12 @@ static int	ft_key_release(int keycode, t_game *game)
 static int	render_next_frame(t_game *game)
 {
 	static int i = 0;
-	
+
 	if (i++ % 5 == 0)
 	{
 		update_frodo_moves(game);
 		update_gollum_moves(game);
-        // make_orc_moves(game);
+		update_orc_moves(game);
 		// if (game_over(game) == 1)
 		// {
         //     mlx_string_put(game->mlx, game->mlx_win,
