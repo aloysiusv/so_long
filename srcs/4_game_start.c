@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5_game_start.c                                     :+:      :+:    :+:   */
+/*   4_game_start.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/17 19:33:31 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:23:01 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ void	print_moves(t_game *game)
 {
 	if (game->move_up == 1 || game->move_down == 1
 		|| game->move_left == 1 || game->move_right == 1)
-	{
-		printf("Moves = %zu\r", game->moves);
-		fflush(stdout);
-	}
+		printf("Moves = %zu\n\033[1F", game->moves);
 }
 
 static int	render_next_frame(t_game *game)

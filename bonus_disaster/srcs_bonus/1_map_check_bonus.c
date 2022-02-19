@@ -6,20 +6,15 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/17 20:57:55 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 14:14:03 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes_bonus/so_long_bonus.h"
 
-static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
+static void	is_characters(t_game *game, int i, int j)
 {
-	if (i == 0 || i == game->height - 1 || j == 0 || j == game->width - 1)
-	{
-		if (game->map[i][j] != '1')
-			return (-1);
-	}
-	else if (game->map[i][j] == 'P')
+	if (game->map[i][j] == 'P')
 	{
 		game->frodo_y = i;
 		game->frodo_x = j;
@@ -40,6 +35,18 @@ static int borders_or_chars_and_keep_count(t_game *game, int i, int j)
 		game->orc_x = j;
 		game->map[i][j] = '0';
 	}
+}
+
+static int	is_borders_or_chars(t_game *game, int i, int j)
+{
+	if (i == 0 || i == game->height - 1 || j == 0 || j == game->width - 1)
+	{
+		if (game->map[i][j] != '1')
+			return (-1);
+	}
+	else if (game->map[i][j] == 'P' || game->map[i][j] == 'G'
+			|| game->map[i][j] == 'X')
+		is_characters(game, i, j);
 	else if (game->map[i][j] == 'C')
 		game->nb_swords++;
 	else if (game->map[i][j] == 'E')
@@ -60,7 +67,7 @@ static int	check_map(t_game *game)
 		j = 0;
 		while (j < game->width)
 		{
-			if (borders_or_chars_and_keep_count(game, i, j) == -1)
+			if (is_borders_or_chars(game, i, j) == -1)
 				return (-1);
 			j++;
 		}
@@ -74,19 +81,19 @@ static int	check_map(t_game *game)
 static int	check_extension(char *ext, char *filename)
 {
 	size_t	i;
-    size_t  j;
-    
-    if (ft_strlen(filename) < 5)
-        return (-1);
-    i = ft_strlen(filename) - 4;
-    j = 0;
-    while (ext[j])
-    {
-        if (ext[j] != filename[i])
-            return(-1);
-        i++;
-        j++;
-    }
+	size_t	j;
+
+	if (ft_strlen(filename) < 5)
+		return (-1);
+	i = ft_strlen(filename) - 4;
+	j = 0;
+	while (ext[j])
+	{
+		if (ext[j] != filename[i])
+			return (-1);
+		i++;
+		j++;
+	}
 	return (0);
 }
 

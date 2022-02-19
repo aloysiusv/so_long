@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 17:14:50 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:23:51 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # define IMG_W		40
 # define IMG_H		40
+# define PIX_SIZE	40
 
 enum	e_textures
 {

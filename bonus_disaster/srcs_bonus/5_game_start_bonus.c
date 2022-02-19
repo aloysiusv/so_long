@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/17 21:32:45 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:05:40 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		mlx_loop_end(game->mlx);
-	else if (keycode == W )
+	else if (keycode == W)
 		game->frodo_move_up = 1;
 	else if (keycode == S)
 		game->frodo_move_down = 1;
@@ -24,7 +24,7 @@ static int	ft_key_press(int keycode, t_game *game)
 		game->frodo_move_left = 1;
 	else if (keycode == D)
 		game->frodo_move_right = 1;
-	else if (keycode == UP )
+	else if (keycode == UP)
 		game->gollum_move_up = 1;
 	else if (keycode == DOWN)
 		game->gollum_move_down = 1;
@@ -56,41 +56,39 @@ static int	ft_key_release(int keycode, t_game *game)
 	return (0);
 }
 
-// static int	game_over(t_game *game)
-// {
-// 	if (game->map[game->frodo_y][game->frodo_x] 
-//         == game->map[game->orc_y][game->orc_x - 1] || 
-// 		game->map[game->frodo_y][game->frodo_x] 
-//         == game->map[game->orc_y][game->orc_x + 1] ||
-// 		game->map[game->gollum_y][game->gollum_x]
-//         == game->map[game->orc_y][game->orc_x - 1] ||
-// 		game->map[game->gollum_y][game->gollum_x] 
-//         == game->map[game->orc_y][game->orc_x + 1])
-//         return (1);
-//     else
-//         return (0);
-// }
+void	print_moves(t_game *game, char *name, int moves, int x)
+{
+	char	*player_moves;
+	char	*player_str;
+
+	player_moves = ft_itoa(moves);
+	if (player_moves == NULL)
+		return ;
+	player_str = ft_strjoin(name, player_moves);
+	if (player_str == NULL)
+	{
+		free(player_moves);
+		return ;
+	}
+	mlx_string_put(game->mlx, game->mlx_win, x, 30, 0xCCCCCC, player_str);
+	free(player_str);
+	free(player_moves);
+}
 
 static int	render_next_frame(t_game *game)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i++ % 5 == 0)
 	{
 		update_frodo_moves(game);
 		update_gollum_moves(game);
 		update_orc_moves(game);
-		// if (game_over(game) == 1)
-		// {
-        //     mlx_string_put(game->mlx, game->mlx_win,
-        //         game->height / 3, game->width / 3, 0xCC0000, "GAME OVER :(");
-        //     usleep(10000);
-        //     free_all(game);
-        //     exit(EXIT_SUCCESS);
-        // }
 	}
 	update_players_state(game);
 	display_frame(game);
+	print_moves(game, "FRODO = ", game->frodo_moves, 20);
+	print_moves(game, "GOLLUM = ", game->gollum_moves, 500);
 	return (0);
 }
 

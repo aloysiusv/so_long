@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:41:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 18:11:02 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:19:31 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,10 @@ static int	check_extension(char *ext, char *filename)
 int	is_map_valid(t_game *game, char *filename)
 {
 	if (check_extension(".ber", filename) == -1)
-	{
-		ft_putstr_fd("Wrong ext.\n", 1);
 		return (-1);
-	}
 	if (get_map(game, filename) == -1)
-	{
-		ft_putstr_fd("Unable to get map.\n", 1);
 		return (-1);
-	}
 	if (check_map(game) == -1)
-	{
-		ft_putstr_fd("Problem in map.\n", 1);
 		return (-1);
-	}
 	return (0);
 }

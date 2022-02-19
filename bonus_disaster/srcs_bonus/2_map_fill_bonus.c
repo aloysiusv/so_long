@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:36:36 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/16 21:53:11 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 14:01:15 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	count_lines(char *filename)
 	char	*line;
 	int		nb_lines;
 	int		fd;
-	
+
 	line = NULL;
 	nb_lines = 0;
 	fd = open(filename, O_RDONLY);
@@ -44,8 +44,11 @@ static void	init_map(t_game *game)
 		game->map[i++] = NULL;
 }
 
-static int	fill_map(t_game *game, int fd, int ret, int i, char *filename)
+static int	fill_map(t_game *game, int ret, int i, char *filename)
 {
+	int	fd;
+
+	fd = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (-1);
@@ -63,16 +66,15 @@ static int	fill_map(t_game *game, int fd, int ret, int i, char *filename)
 		if (ret == -1)
 			return (-1);
 	}
+	close(fd);
 	return (0);
 }
 
 int	get_map(t_game *game, char *filename)
 {
-	int		fd;
 	int		ret;
-	size_t i;
+	size_t	i;
 
-	fd = 0;
 	ret = 0;
 	i = 0;
 	game->height = count_lines(filename);
@@ -82,11 +84,10 @@ int	get_map(t_game *game, char *filename)
 	if (game->map == NULL)
 		return (-1);
 	init_map(game);
-	if (fill_map(game, fd, ret, i, filename) == -1)
+	if (fill_map(game, ret, i, filename) == -1)
 		return (-1);
 	if (game->map[i] != NULL && *game->map[i] != 0)
 		if (ft_strlen(game->map[i]) != (size_t)game->width)
 			return (-1);
-	close(fd);
 	return (0);
 }

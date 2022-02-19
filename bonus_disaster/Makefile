@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/16 21:49:42 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/19 15:17:22 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ OBJS		=	$(SRCS:.c=.o)
 HDR			=	./includes_bonus/so_long_bonus.h
 S			=	./srcs_bonus/
 SRCS		=	$(S)0_main_bonus.c \
-				$(S)1_map_check_bonus.c $(S)2_map_fill_bonus.c $(S)3_map_print_bonus.c\
-				$(S)4_game_init_bonus.c $(S)5_game_start_bonus.c $(S)6_game_next_frame_bonus.c \
+				$(S)1_map_check_bonus.c $(S)2_map_fill_bonus.c \
+				$(S)3_init_txtr_bonus.c $(S)4_init_moves_bonus.c \
+				$(S)5_game_start_bonus.c $(S)6_game_next_frame_bonus.c \
 				$(S)7_utils_draw_bonus.c $(S)8_utils_free_bonus.c
 
 all:		$(MLX) $(LFT) $(NAME)
