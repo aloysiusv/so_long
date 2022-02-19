@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 15:05:40 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:14:54 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_key_release(int keycode, t_game *game)
 	return (0);
 }
 
-void	print_moves(t_game *game, char *name, int moves, int x)
+static void	print_moves(t_game *game, char *name, int moves, int x)
 {
 	char	*player_moves;
 	char	*player_str;
@@ -78,6 +78,8 @@ void	print_moves(t_game *game, char *name, int moves, int x)
 static int	render_next_frame(t_game *game)
 {
 	static int	i = 0;
+	const int	g_w_first = game->width * PIX_SIZE / 4;
+	const int	g_w_last = g_w_first * 3;
 
 	if (i++ % 5 == 0)
 	{
@@ -87,8 +89,8 @@ static int	render_next_frame(t_game *game)
 	}
 	update_players_state(game);
 	display_frame(game);
-	print_moves(game, "FRODO = ", game->frodo_moves, 20);
-	print_moves(game, "GOLLUM = ", game->gollum_moves, 500);
+	print_moves(game, "FRODO = ", game->frodo_moves, g_w_first);
+	print_moves(game, "GOLLUM = ", game->gollum_moves, g_w_last);
 	return (0);
 }
 

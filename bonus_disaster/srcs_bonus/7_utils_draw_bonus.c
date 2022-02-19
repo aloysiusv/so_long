@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:25:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 14:31:22 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:24:34 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,27 @@ void	draw_canvas(t_img *mlx_img, int x, int y, int colour)
 		}
 		i++;
 	}		
+}
+
+void	draw_player(t_img *mlx_img, int x, int y, t_img *texture)
+{
+	int	i;
+	int	j;
+	int	color;
+
+	i = 0;
+	while (i < PIX_SIZE)
+	{
+		j = 0;
+		while (j < PIX_SIZE)
+		{
+			color = get_pixel(texture, j, i);
+			if (!(color & 0xFF000000))
+				put_pixels(mlx_img, x + j, y + i, color);
+			j++;
+		}
+		i++;
+	}	
 }
 
 void	draw_txtr(t_img *mlx_img, int x, int y, t_img *texture)

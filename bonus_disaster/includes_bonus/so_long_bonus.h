@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 14:28:49 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:23:18 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	update_gollum_moves(t_game *game);
 void	update_orc_moves(t_game *game);
 void	update_players_state(t_game *game);
 
+void	draw_player(t_img *mlx_img, int x, int y, t_img *texture);
 void	draw_txtr(t_img *mlx_img, int x, int y, t_img *texture);
 void	draw_canvas(t_img *mlx_img, int x, int y, int colour);
 
