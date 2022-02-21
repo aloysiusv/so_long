@@ -6,17 +6,17 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:37:41 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 17:07:20 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:54:56 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/so_long_bonus.h"
+#include "bonus/includes_bonus/so_long_bonus.h"
 
 static int	textures_inanimate(t_game *game)
 {
-	const char	*out_wall_txt = "./assets_bonus/wall_1.xpm";
-	const char	*in_wall_txt = "./assets_bonus/wall_2.xpm";
-	const char	*sword_txt = "./assets_bonus/sword.xpm";
+	const char	*out_wall_txt = "bonus/assets_bonus/wall_1.xpm";
+	const char	*in_wall_txt = "bonus/assets_bonus/wall_2.xpm";
+	const char	*sword_txt = "bonus/assets_bonus/sword.xpm";
 	int			img_width;
 	int			img_height;
 
@@ -39,9 +39,9 @@ static int	textures_inanimate(t_game *game)
 
 static int	textures_orcs_exit(t_game *game)
 {
-	const char	*orc_right_txt = "./assets_bonus/orc_right.xpm";
-	const char	*orc_left_txt = "./assets_bonus/orc_left.xpm";
-	const char	*exit_txt = "./assets_bonus/door.xpm";
+	const char	*orc_right_txt = "bonus/assets_bonus/orc_right.xpm";
+	const char	*orc_left_txt = "bonus/assets_bonus/orc_left.xpm";
+	const char	*exit_txt = "bonus/assets_bonus/door.xpm";
 	int			img_width;
 	int			img_height;
 
@@ -64,8 +64,8 @@ static int	textures_orcs_exit(t_game *game)
 
 static int	load_textures(t_game *game)
 {
-	const char	*frodo_txt = "./assets_bonus/frodo.xpm";
-	const char	*gollum_txt = "./assets_bonus/gollum.xpm";
+	const char	*frodo_txt = "bonus/assets_bonus/frodo.xpm";
+	const char	*gollum_txt = "bonus/assets_bonus/gollum.xpm";
 	int			img_width;
 	int			img_height;
 

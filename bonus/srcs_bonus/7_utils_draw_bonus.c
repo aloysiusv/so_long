@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:25:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 18:24:34 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:32:58 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/so_long_bonus.h"
+#include "bonus/includes_bonus/so_long_bonus.h"
 
 static void	put_pixels(t_img *mlx_img, int x, int y, int colour)
 {

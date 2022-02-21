@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:29:54 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 16:06:17 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:32:44 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/so_long_bonus.h"
+#include "bonus/includes_bonus/so_long_bonus.h"
 
 void	update_frodo_moves_2(t_game *game)
 {

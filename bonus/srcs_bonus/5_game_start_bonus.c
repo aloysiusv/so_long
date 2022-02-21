@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 16:16:47 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:32:50 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/so_long_bonus.h"
+#include "bonus/includes_bonus/so_long_bonus.h"
 
 static int	ft_key_press(int keycode, t_game *game)
 {

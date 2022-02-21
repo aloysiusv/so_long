@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:16:31 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 16:37:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:52:53 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/so_long_bonus.h"
+#include "bonus/includes_bonus/so_long_bonus.h"
 
 static void	game_end(t_game *game, char *message)
 {
@@ -30,13 +30,14 @@ void	update_players_state(t_game *game)
 		game->taken++;
 		game->map[game->gollum_y][game->gollum_x] = '0';
 	}
-	else if (game->nb_frodo == 1 && game->frodo_y == game->orc_y 
-			&& (game->frodo_x == game->orc_x
-			|| game->frodo_x == game->orc_x + 1
-			|| game->frodo_x == game->orc_x - 1))
+	else if (game->nb_frodo == 1 && game->frodo_y == game->orc_y
+		&& (game->frodo_x == game->orc_x
+		|| game->frodo_x == game->orc_x + 1
+		|| game->frodo_x == game->orc_x - 1))
 		game_end(game, "\033[1;31mGAME OVER\n\033[0m");
-	else if ((game->nb_frodo == 1 && game->map[game->frodo_y][game->frodo_x] == 'E') 
-	|| (game->nb_gollum == 1 && game->map[game->gollum_y][game->gollum_x] == 'E'))
+	else if ((game->nb_frodo == 1
+		&& game->map[game->frodo_y][game->frodo_x] == 'E') || (game->nb_gollum == 1
+		&& game->map[game->gollum_y][game->gollum_x] == 'E'))
 		if (game->taken == game->nb_swords)
 			game_end(game, "\033[0;32mWELL DONE\n\033[0m");
 }

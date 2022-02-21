@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:36:36 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 14:01:15 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:32:34 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/so_long_bonus.h"
+#include "bonus/includes_bonus/so_long_bonus.h"
 
 static int	count_lines(char *filename)
 {
