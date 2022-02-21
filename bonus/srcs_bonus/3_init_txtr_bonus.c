@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:37:41 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 15:16:35 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:07:20 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	init_game(t_game *game)
 	game->mlx_img = mlx_new_image(game->mlx, game->width * IMG_W,
 			game->height * IMG_H);
 	if (game->mlx_img == NULL)
-		return (-1);
+		return (1);
 	if (load_textures(game) == -1)
 		return (-1);
 	return (0);

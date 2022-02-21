@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/19 15:25:21 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/21 17:08:45 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ HDR			=	./includes/so_long.h
 S			=	./srcs/
 SRCS		=	$(S)0_main.c \
 				$(S)1_map_check.c $(S)2_map_fill.c \
-				$(S)3_game_init.c $(S)4_game_start.c $(S)6_game_next_frame.c \
+				$(S)3_game_init.c $(S)4_game_start.c $(S)5_game_next_frame.c \
 				$(S)6_utils_draw.c $(S)7_utils_free.c
 
 all:		$(MLX) $(LFT) $(NAME)
@@ -34,9 +34,6 @@ $(MLX):
 			make -C ./minilibx-linux
 $(LFT):
 			make -C ./libft
-
-debug:		$(OBJS)
-			$(CC) $(CFLAGS) -g3 -fsanitize=address $(OBJS) -o $(NAME) $(LIBS)
 
 %.o:		%.c $(HDR)
 			$(CC) $(CFLAGS) $(INC) -c -o $@ $< 

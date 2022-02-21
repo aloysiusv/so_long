@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 18:10:38 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:39:46 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	is_characters(t_game *game, int i, int j)
 		game->frodo_y = i;
 		game->frodo_x = j;
 		game->map[i][j] = '0';
+		game->nb_frodo++;
 		game->nb_players++;
 	}
 	else if (game->map[i][j] == 'G')
@@ -26,6 +27,7 @@ static void	is_characters(t_game *game, int i, int j)
 		game->gollum_y = i;
 		game->gollum_x = j;
 		game->map[i][j] = '0';
+		game->nb_gollum++;
 		game->nb_players++;
 	}
 	else if (game->map[i][j] == 'X')
@@ -33,6 +35,7 @@ static void	is_characters(t_game *game, int i, int j)
 		game->orc_dir = 0;
 		game->orc_y = i;
 		game->orc_x = j;
+		game->nb_orc++;
 		game->map[i][j] = '0';
 	}
 }
@@ -73,7 +76,8 @@ static int	check_map(t_game *game)
 		}
 		i++;
 	}
-	if (game->nb_swords < 1 || game->nb_exits < 1 || game->nb_players < 1)
+	if (game->nb_swords < 1 || game->nb_exits < 1 || game->nb_players < 1
+		|| game->nb_frodo > 1 || game->nb_gollum > 1 || game->nb_orc > 1)
 		return (-1);
 	return (0);
 }

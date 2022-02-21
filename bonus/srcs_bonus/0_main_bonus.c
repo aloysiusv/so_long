@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 14:09:00 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:00:41 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ static void	init_struct(t_game *game)
 	game->orc_dir = -1;
 	game->orc_x = 0;
 	game->orc_y = 0;
+	game->nb_frodo = 0;
+	game->nb_gollum = 0;
+	game->nb_orc = 0;
 	game->nb_players = 0;
 	game->nb_swords = 0;
 	game->nb_exits = 0;

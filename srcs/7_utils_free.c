@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 18:09:51 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 15:24:06 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:14:35 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_all(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->mlx != NULL && i < NB_TXTR)
+	while (game->mlx != NULL && game->textures[i] != NULL && i < NB_TXTR)
 		mlx_destroy_image(game->mlx, game->textures[i++]);
 	if (game->mlx_img != NULL)
 		mlx_destroy_image(game->mlx, game->mlx_img);

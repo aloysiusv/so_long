@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 18:14:54 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:16:47 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,55 @@ static int	ft_key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		mlx_loop_end(game->mlx);
-	else if (keycode == W)
-		game->frodo_move_up = 1;
-	else if (keycode == S)
-		game->frodo_move_down = 1;
-	else if (keycode == A)
-		game->frodo_move_left = 1;
-	else if (keycode == D)
-		game->frodo_move_right = 1;
-	else if (keycode == UP)
-		game->gollum_move_up = 1;
-	else if (keycode == DOWN)
-		game->gollum_move_down = 1;
-	else if (keycode == LEFT)
-		game->gollum_move_left = 1;
-	else if (keycode == RIGHT)
-		game->gollum_move_right = 1;
+	if (game->nb_frodo == 1)
+	{
+		if (keycode == W)
+			game->frodo_move_up = 1;
+		else if (keycode == S)
+			game->frodo_move_down = 1;
+		else if (keycode == A)
+			game->frodo_move_left = 1;
+		else if (keycode == D)
+			game->frodo_move_right = 1;
+	}
+	if (game->nb_gollum == 1)
+	{
+		if (keycode == UP)
+			game->gollum_move_up = 1;
+		else if (keycode == DOWN)
+			game->gollum_move_down = 1;
+		else if (keycode == LEFT)
+			game->gollum_move_left = 1;
+		else if (keycode == RIGHT)
+			game->gollum_move_right = 1;
+	}
 	return (0);
 }
 
 static int	ft_key_release(int keycode, t_game *game)
 {
-	if (keycode == W)
-		game->frodo_move_up = 0;
-	else if (keycode == S)
-		game->frodo_move_down = 0;
-	else if (keycode == A)
-		game->frodo_move_left = 0;
-	else if (keycode == D)
-		game->frodo_move_right = 0;
-	if (keycode == UP)
-		game->gollum_move_up = 0;
-	else if (keycode == DOWN)
-		game->gollum_move_down = 0;
-	else if (keycode == LEFT)
-		game->gollum_move_left = 0;
-	else if (keycode == RIGHT)
-		game->gollum_move_right = 0;
+	if (game->nb_frodo == 1)
+	{
+		if (keycode == W)
+			game->frodo_move_up = 0;
+		else if (keycode == S)
+			game->frodo_move_down = 0;
+		else if (keycode == A)
+			game->frodo_move_left = 0;
+		else if (keycode == D)
+			game->frodo_move_right = 0;
+	}
+	if (game->nb_gollum == 1)
+	{
+		if (keycode == UP)
+			game->gollum_move_up = 0;
+		else if (keycode == DOWN)
+			game->gollum_move_down = 0;
+		else if (keycode == LEFT)
+			game->gollum_move_left = 0;
+		else if (keycode == RIGHT)
+			game->gollum_move_right = 0;
+	}
 	return (0);
 }
 
@@ -78,10 +90,14 @@ static void	print_moves(t_game *game, char *name, int moves, int x)
 static int	render_next_frame(t_game *game)
 {
 	static int	i = 0;
-	const int	g_w_first = game->width * PIX_SIZE / 4;
-	const int	g_w_last = g_w_first * 3;
+	const int	first_quarter = game->width * PIX_SIZE / 4;
+	const int	last_quarter = first_quarter * 3;
+	int			slower;
 
-	if (i++ % 5 == 0)
+	slower = 10;
+	if (game->width >= 20 || game->height >= 20)
+		slower = 5;
+	if (i++ % slower == 0)
 	{
 		update_frodo_moves(game);
 		update_gollum_moves(game);
@@ -89,8 +105,10 @@ static int	render_next_frame(t_game *game)
 	}
 	update_players_state(game);
 	display_frame(game);
-	print_moves(game, "FRODO = ", game->frodo_moves, g_w_first);
-	print_moves(game, "GOLLUM = ", game->gollum_moves, g_w_last);
+	if (game->nb_frodo == 1)
+		print_moves(game, "FRODO = ", game->frodo_moves, first_quarter);
+	if (game->nb_gollum == 1)
+		print_moves(game, "GOLLUM = ", game->gollum_moves, last_quarter);
 	return (0);
 }
 

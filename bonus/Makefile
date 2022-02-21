@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/19 18:10:42 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/21 15:31:47 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,6 @@ $(MLX):
 			make -C ./minilibx-linux
 $(LFT):
 			make -C ./libft
-
-debug:		$(OBJS)
-			$(CC) $(CFLAGS) -g3 -fsanitize=address $(OBJS) -o $(NAME) $(LIBS)
 
 %.o:		%.c $(HDR)
 			$(CC) $(CFLAGS) $(INC) -c -o $@ $< 
