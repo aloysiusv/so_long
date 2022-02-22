@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/21 21:35:53 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/22 03:42:12 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,16 +39,15 @@ SRCS_BONUS	=	$(S_BONUS)0_main_bonus.c \
 				$(S_BONUS)6_game_next_frame_bonus.c \
 				$(S_BONUS)7_utils_draw_bonus.c $(S_BONUS)8_utils_free_bonus.c
 
-all:			$(MLX) $(LFT) $(NAME)
+all:			$(MLX) $(LFT) $(NAME) $(MLX_BONUS) $(LFT_BONUS) $(NAME_BONUS)
 
 $(NAME):		$(OBJS)
 				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
 
-bonus:		$(MLX_BONUS) $(LFT_BONUS) $(NAME_BONUS)
+bonus:			$(MLX_BONUS) $(LFT_BONUS) $(NAME_BONUS)
 
 $(NAME_BONUS):	$(OBJS_BONUS)
 				$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBS_BONUS)
-
 
 $(MLX):
 			make -C ./minilibx-linux

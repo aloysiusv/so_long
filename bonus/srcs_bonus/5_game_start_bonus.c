@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 21:32:50 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/22 03:33:22 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_key_press(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		mlx_loop_end(game->mlx);
-	if (game->nb_frodo == 1)
+	if (game->frodo == 1)
 	{
 		if (keycode == W)
 			game->frodo_move_up = 1;
@@ -27,7 +27,7 @@ static int	ft_key_press(int keycode, t_game *game)
 		else if (keycode == D)
 			game->frodo_move_right = 1;
 	}
-	if (game->nb_gollum == 1)
+	if (game->gollum == 1)
 	{
 		if (keycode == UP)
 			game->gollum_move_up = 1;
@@ -43,7 +43,7 @@ static int	ft_key_press(int keycode, t_game *game)
 
 static int	ft_key_release(int keycode, t_game *game)
 {
-	if (game->nb_frodo == 1)
+	if (game->frodo == 1)
 	{
 		if (keycode == W)
 			game->frodo_move_up = 0;
@@ -54,7 +54,7 @@ static int	ft_key_release(int keycode, t_game *game)
 		else if (keycode == D)
 			game->frodo_move_right = 0;
 	}
-	if (game->nb_gollum == 1)
+	if (game->gollum == 1)
 	{
 		if (keycode == UP)
 			game->gollum_move_up = 0;
@@ -94,8 +94,8 @@ static int	render_next_frame(t_game *game)
 	const int	last_quarter = first_quarter * 3;
 	int			slower;
 
-	slower = 10;
-	if (game->width >= 20 || game->height >= 20)
+	slower = 15;
+	if (game->nb_players == 2 && game->nb_orc == 1)
 		slower = 5;
 	if (i++ % slower == 0)
 	{
@@ -105,9 +105,9 @@ static int	render_next_frame(t_game *game)
 	}
 	update_players_state(game);
 	display_frame(game);
-	if (game->nb_frodo == 1)
+	if (game->frodo == 1)
 		print_moves(game, "FRODO = ", game->frodo_moves, first_quarter);
-	if (game->nb_gollum == 1)
+	if (game->gollum == 1)
 		print_moves(game, "GOLLUM = ", game->gollum_moves, last_quarter);
 	return (0);
 }

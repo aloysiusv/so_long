@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:16:31 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 21:52:53 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/22 03:26:09 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ void	update_players_state(t_game *game)
 		game->taken++;
 		game->map[game->gollum_y][game->gollum_x] = '0';
 	}
-	else if (game->nb_frodo == 1 && game->frodo_y == game->orc_y
+	else if (game->frodo == 1 && game->frodo_y == game->orc_y
 		&& (game->frodo_x == game->orc_x
-		|| game->frodo_x == game->orc_x + 1
-		|| game->frodo_x == game->orc_x - 1))
+			|| game->frodo_x == game->orc_x + 1
+			|| game->frodo_x == game->orc_x - 1))
 		game_end(game, "\033[1;31mGAME OVER\n\033[0m");
-	else if ((game->nb_frodo == 1
-		&& game->map[game->frodo_y][game->frodo_x] == 'E') || (game->nb_gollum == 1
-		&& game->map[game->gollum_y][game->gollum_x] == 'E'))
+	else if ((game->frodo == 1
+			&& game->map[game->frodo_y][game->frodo_x] == 'E')
+			|| (game->gollum == 1 && game->map[game->gollum_y][game->gollum_x]
+			== 'E'))
 		if (game->taken == game->nb_swords)
 			game_end(game, "\033[0;32mWELL DONE\n\033[0m");
 }
@@ -71,9 +72,9 @@ static void	display_elements(t_game *game, int i, int j)
 		display_more_elements(game, i, j);
 	else
 		draw_canvas(game->mlx_img, j * IMG_W, i * IMG_H, 0x00000000);
-	if (game->nb_frodo == 1 && game->frodo_x == j && game->frodo_y == i)
+	if (game->frodo == 1 && game->frodo_x == j && game->frodo_y == i)
 		draw_player(game->mlx_img, j * IMG_W, i * IMG_H, game->txtr[FRODO]);
-	if (game->nb_gollum && game->gollum_x == j && game->gollum_y == i)
+	if (game->gollum && game->gollum_x == j && game->gollum_y == i)
 		draw_player(game->mlx_img, j * IMG_W, i * IMG_H, game->txtr[GOLLUM]);
 }
 

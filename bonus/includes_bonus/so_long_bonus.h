@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 18:55:29 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/22 03:26:04 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ typedef struct s_game
 	int			gollum_move_left;
 	int			gollum_move_right;
 	int			gollum_moves;
-	size_t		nb_frodo;
-	size_t		nb_gollum;
+	size_t		frodo;
+	size_t		gollum;
 	size_t		nb_orc;
 	size_t		nb_players;
 	size_t		nb_swords;

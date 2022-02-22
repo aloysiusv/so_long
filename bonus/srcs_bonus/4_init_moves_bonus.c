@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:29:54 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 21:32:44 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/22 03:26:04 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	update_frodo_moves_2(t_game *game)
 {
-	if (game->nb_frodo == 1)
+	if (game->frodo == 1)
 	{
 		if (game->frodo_move_left == 1)
 		{
@@ -37,7 +37,7 @@ void	update_frodo_moves_2(t_game *game)
 
 void	update_frodo_moves(t_game *game)
 {
-	if (game->nb_frodo == 1)
+	if (game->frodo == 1)
 	{
 		if (game->frodo_move_up == 1)
 		{
@@ -61,7 +61,7 @@ void	update_frodo_moves(t_game *game)
 
 static void	update_gollum_moves_2(t_game *game)
 {
-	if (game->nb_gollum == 1)
+	if (game->gollum == 1)
 	{
 		if (game->gollum_move_left == 1)
 		{
@@ -84,7 +84,7 @@ static void	update_gollum_moves_2(t_game *game)
 
 void	update_gollum_moves(t_game *game)
 {
-	if (game->nb_gollum == 1)
+	if (game->gollum == 1)
 	{
 		if (game->gollum_move_up == 1)
 		{
