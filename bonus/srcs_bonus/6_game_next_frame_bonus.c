@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:16:31 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 03:26:09 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:09:33 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	game_end(t_game *game, char *message)
 {
-	printf("%s", message);
+	ft_putstr_fd(message, 1);
 	mlx_loop_end(game->mlx);
 }
 
@@ -41,12 +41,13 @@ void	update_players_state(t_game *game)
 			== 'E'))
 		if (game->taken == game->nb_swords)
 			game_end(game, "\033[0;32mWELL DONE\n\033[0m");
+			
 }
 
 static void	display_more_elements(t_game *game, int i, int j)
 {
 	if (game->map[i][j] == '1')
-	{	
+	{
 		if (i == 0 || i == game->height - 1 || j == 0 || j == game->width - 1)
 			draw_txtr(game->mlx_img, j * IMG_W, i * IMG_H, game->txtr[WALL_1]);
 		else

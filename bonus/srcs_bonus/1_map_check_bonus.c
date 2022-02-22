@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 03:26:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/22 03:49:15 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,19 +104,10 @@ static int	check_extension(char *ext, char *filename)
 int	is_map_valid(t_game *game, char *filename)
 {
 	if (check_extension(".ber", filename) == -1)
-	{
-		printf("Wrong ext.\n");
 		return (-1);
-	}
 	if (get_map(game, filename) == -1)
-	{
-		printf("Unable to get map.\n");
 		return (-1);
-	}
 	if (check_map(game) == -1)
-	{
-		printf("Problem in map.\n");
 		return (-1);
-	}
 	return (0);
 }
