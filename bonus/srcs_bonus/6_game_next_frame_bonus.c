@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:16:31 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 14:09:33 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:59:13 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	update_players_state(t_game *game)
 			== 'E'))
 		if (game->taken == game->nb_swords)
 			game_end(game, "\033[0;32mWELL DONE\n\033[0m");
-			
 }
 
 static void	display_more_elements(t_game *game, int i, int j)

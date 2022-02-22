@@ -6,21 +6,18 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/22 15:46:22 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/22 15:55:58 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 NAME_BONUS	=	so_long_bonus
 MLX			=	minilibx-linux/libmlx.a
-MLX_BONUS	= 	./bonus/minilibx-linux/libmlx.a
 LFT			= 	libft/libft.a
-LFT_BONUS	= 	./bonus/libft/libft.a
 CC			=	clang
 CFLAGS		=	-Wall -Wextra -Werror
 INC			=	-I ./
 LIBS		=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
-LIBS_BONUS 	=	-L ./bonus/libft -lft -L ./bonus/minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 OBJS		=	$(SRCS:.c=.o)
 OBJS_BONUS	=	$(SRCS_BONUS:.c=.o)
 HDR_BONUS	=	./bonus/includes_bonus/so_long_bonus.h
@@ -39,25 +36,20 @@ SRCS_BONUS	=	$(S_BONUS)0_main_bonus.c \
 				$(S_BONUS)6_game_next_frame_bonus.c \
 				$(S_BONUS)7_utils_draw_bonus.c $(S_BONUS)8_utils_free_bonus.c
 
-all:			$(MLX) $(LFT) $(NAME) $(MLX_BONUS) $(LFT_BONUS) $(NAME_BONUS)
+all:			$(MLX) $(LFT) $(NAME) $(NAME_BONUS)
 
 $(NAME):		$(OBJS)
 				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
 
-bonus:			$(MLX_BONUS) $(LFT_BONUS) $(NAME_BONUS)
+bonus:			$(MLX) $(LFT) $(NAME_BONUS)
 
 $(NAME_BONUS):	$(OBJS_BONUS)
-				$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBS_BONUS)
+				$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBS)
 
 $(MLX):
 			make -C ./minilibx-linux
 $(LFT):
 			make -C ./libft
-
-$(MLX_BONUS):
-			make -C ./bonus/minilibx-linux
-$(LFT_BONUS):
-			make -C ./bonus/libft
 
 %.o:		%.c $(HDR) $(HDR_BONUS)
 			$(CC) $(CFLAGS) $(INC) -c -o $@ $< 
