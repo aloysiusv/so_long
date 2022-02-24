@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:36:36 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 15:18:41 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/24 04:32:10 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	count_lines(char *filename)
 	int		nb_lines;
 	int		fd;
 
-	line = NULL;
 	nb_lines = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -28,47 +27,46 @@ static int	count_lines(char *filename)
 		nb_lines++;
 		free(line);
 	}
-	if (line != NULL && *line != 0)
-		nb_lines++;
+	if (line != NULL)
+	{
+		if (*line != 0)
+			nb_lines++;
+	}
 	free(line);
 	close(fd);
 	return (nb_lines);
 }
 
-static void	init_map(t_game *game)
+static void	init_map(t_game *game, int size)
 {
 	int	i;
 
 	i = 0;
-	while (i < game->height)
+	while (i < size)
 		game->map[i++] = NULL;
 }
 
 static int	fill_map(t_game *game, int fd, int ret, char *filename)
 {
 	size_t	i;
+	char	*line;
 
-	i = 0;
+	line = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	ret = get_next_line(fd, &game->map[i]);
+	ret = get_next_line(fd, &line);
 	if (ret == -1)
 		return (-1);
-	game->width = ft_strlen(game->map[i]);
-	if (game->width < 3)
-		return (-1);
+	game->width = ft_strlen(line);
+	game->map[0] = line;
+	i = 0;
 	while (ret > 0)
 	{
-		if (ft_strlen(game->map[i]) != (size_t)game->width)
-			return (-1);
 		ret = get_next_line(fd, &game->map[++i]);
 		if (ret == -1)
 			return (-1);
 	}
-	if (game->map[i] != NULL && *game->map[i] != 0)
-		if (ft_strlen(game->map[i]) != (size_t)game->width)
-			return (-1);
 	close(fd);
 	return (0);
 }
@@ -81,12 +79,12 @@ int	get_map(t_game *game, char *filename)
 	fd = 0;
 	ret = 0;
 	game->height = count_lines(filename);
-	if (game->height == -1)
+	if (game->height < 3)
 		return (-1);
-	game->map = (char **)malloc(sizeof(char *) * game->height);
+	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (game->map == NULL)
 		return (-1);
-	init_map(game);
+	init_map(game, game->height + 1);
 	if (fill_map(game, fd, ret, filename) == -1)
 		return (-1);
 	return (0);

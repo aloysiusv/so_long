@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:02:05 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/13 08:45:36 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/23 06:17:06 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	create_one_line(char **line, char **stock)
 		line_size = ft_strclen(*stock, '\n');
 		*line = ft_substr(*stock, 0, line_size);
 		tmp = *stock;
-		*stock = ft_strdup(*stock + line_size + 1);
+		*stock = ft_strdup(tmp + line_size + 1);
 		free(tmp);
 		if (*line == NULL || *stock == NULL)
 			return (-1);

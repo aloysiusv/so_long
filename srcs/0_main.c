@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/19 15:17:40 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/24 04:35:37 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,19 @@ int	main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-		ft_putstr_fd("Error\nInvalid arguments\n", 2);
+		ft_putstr_fd("Error:\ninvalid arguments\n", 2);
 		return (1);
 	}
 	init_struct(&game);
 	if (is_map_valid(&game, av[1]) == -1)
 	{
-		ft_putstr_fd("Error\nInvalid map\n", 2);
+		ft_putstr_fd("Error:\ninvalid map\n", 2);
 		free_all(&game);
 		return (1);
 	}
 	if (init_game(&game) == -1)
-	{	
+	{
+		ft_putstr_fd("Error:\ncan't initialise game\n", 2);
 		free_all(&game);
 		return (1);
 	}

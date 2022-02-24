@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 03:26:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/24 04:45:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static void	init_struct_moves(t_game *game)
 	game->gollum_move_left = 0;
 	game->gollum_move_right = 0;
 	game->gollum_moves = 0;
+	game->frodo_x = 0;
+	game->frodo_y = 0;
+	game->gollum_x = 0;
+	game->gollum_y = 0;
+	game->orc_x = 0;
+	game->orc_y = 0;
 }
 
 static void	init_struct(t_game *game)

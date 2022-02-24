@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/21 21:33:02 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/24 04:30:26 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ void	free_all(t_game *game)
 	if (game->map != NULL)
 	{
 		i = 0;
-		while (i < game->height && game->map[i] != NULL)
-			free(game->map[i++]);
+		while (i <= game->height)
+		{
+			if (game->map[i] != NULL)
+				free(game->map[i]);
+			i++;
+		}
 		free(game->map);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:19:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 14:21:52 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/23 03:43:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ static int	ft_key_release(int keycode, t_game *game)
 
 void	print_moves(t_game *game)
 {
-	if (game->move_up == 1 || game->move_down == 1
-		|| game->move_left == 1 || game->move_right == 1)
+	static size_t	old = 0;
+
+	if (game->moves > old)
 	{
-		if (game->moves)
+		if (game->moves > 1)
 			ft_putstr_fd("\033[1F", 1);
 		ft_putstr_fd("Moves = ", 1);
 		ft_putnbr_fd(game->moves, 1);
 		ft_putstr_fd("\n", 1);
+		old = game->moves;
 	}
 }
 
