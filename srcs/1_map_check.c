@@ -6,11 +6,28 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:41:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/23 15:06:53 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:45:06 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
+
+static int	check_line_len(t_game *game)
+{
+	int	len;
+	int	i;
+
+	len = 0;
+	i = 0;
+	while (game->map[i])
+	{
+		len = ft_strlen(game->map[i]);
+		if (len != game->width)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
 
 static int	borders_or_chars_and_keep_count(t_game *game, int i, int j)
 {
@@ -53,6 +70,8 @@ static int	check_map(t_game *game)
 		i++;
 	}
 	if (game->nb_swords < 1 || game->nb_exits < 1 || game->nb_player != 1)
+		return (-1);
+	if (check_line_len(game) == -1)
 		return (-1);
 	return (0);
 }

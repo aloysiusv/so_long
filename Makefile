@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/22 15:55:58 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/24 14:57:22 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,12 @@ SRCS		=	$(S)0_main.c \
 				$(S)6_utils_draw.c $(S)7_utils_free.c
 
 SRCS_BONUS	=	$(S_BONUS)0_main_bonus.c \
-				$(S_BONUS)1_map_check_bonus.c $(S_BONUS)2_map_fill_bonus.c \
-				$(S_BONUS)3_init_txtr_bonus.c $(S_BONUS)4_init_moves_bonus.c \
-				$(S_BONUS)5_game_start_bonus.c \
-				$(S_BONUS)6_game_next_frame_bonus.c \
-				$(S_BONUS)7_utils_draw_bonus.c $(S_BONUS)8_utils_free_bonus.c
+				$(S_BONUS)1_map_parse_bonus.c \
+				$(S_BONUS)2_map_fill_bonus.c $(S_BONUS)3_map_check_bonus.c\
+				$(S_BONUS)4_init_txtr_bonus.c $(S_BONUS)5_init_moves_bonus.c \
+				$(S_BONUS)6_game_start_bonus.c \
+				$(S_BONUS)7_game_next_frame_bonus.c \
+				$(S_BONUS)8_utils_draw_bonus.c $(S_BONUS)9_utils_free_bonus.c
 
 all:			$(MLX) $(LFT) $(NAME) $(NAME_BONUS)
 
@@ -56,9 +57,11 @@ $(LFT):
 
 clean:
 			rm -rf $(OBJS) $(OBJS_BONUS)
+			make -C ./libft clean
 
 fclean:		clean
 			rm -rf $(NAME) $(NAME_BONUS)
+			make -C ./libft fclean
 
 re:			fclean all
 

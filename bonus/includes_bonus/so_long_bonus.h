@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 03:26:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:58:24 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_game
 
 int		is_map_valid(t_game *game, char *filename);
 int		get_map(t_game *game, char *filename);
+int		check_map(t_game *game);
 
 int		init_game(t_game *game);
 void	launch_game(t_game *game);

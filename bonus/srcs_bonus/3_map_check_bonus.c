@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_map_check_bonus.c                                :+:      :+:    :+:   */
+/*   3_map_check_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 14:42:47 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 03:49:15 by lrandria         ###   ########.fr       */
+/*   Created: 2022/02/24 14:52:07 by lrandria          #+#    #+#             */
+/*   Updated: 2022/02/24 14:59:25 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus/includes_bonus/so_long_bonus.h"
+
+static int	check_line_len(t_game *game)
+{
+	int	len;
+	int	i;
+
+	len = 0;
+	i = 0;
+	while (game->map[i])
+	{
+		len = ft_strlen(game->map[i]);
+		if (len != game->width)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
 
 static void	is_characters(t_game *game, int i, int j)
 {
@@ -59,7 +76,7 @@ static int	is_borders_or_chars(t_game *game, int i, int j)
 	return (0);
 }
 
-static int	check_map(t_game *game)
+int	check_map(t_game *game)
 {
 	int	i;
 	int	j;
@@ -79,35 +96,7 @@ static int	check_map(t_game *game)
 	if (game->nb_swords < 1 || game->nb_exits < 1 || game->nb_players < 1
 		|| game->frodo > 1 || game->gollum > 1 || game->nb_orc > 1)
 		return (-1);
-	return (0);
-}
-
-static int	check_extension(char *ext, char *filename)
-{
-	size_t	i;
-	size_t	j;
-
-	if (ft_strlen(filename) < 5)
-		return (-1);
-	i = ft_strlen(filename) - 4;
-	j = 0;
-	while (ext[j])
-	{
-		if (ext[j] != filename[i])
-			return (-1);
-		i++;
-		j++;
-	}
-	return (0);
-}
-
-int	is_map_valid(t_game *game, char *filename)
-{
-	if (check_extension(".ber", filename) == -1)
-		return (-1);
-	if (get_map(game, filename) == -1)
-		return (-1);
-	if (check_map(game) == -1)
+	if (check_line_len(game) == -1)
 		return (-1);
 	return (0);
 }
