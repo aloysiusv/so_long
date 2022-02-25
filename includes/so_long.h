@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:06:15 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/22 03:35:15 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/25 01:53:37 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define IMG_W		40
 # define IMG_H		40
 # define PIX_SIZE	40
+
+// # define malloc(x)	NULL
 
 enum	e_textures
 {

@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 14:52:07 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/24 14:59:25 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/25 01:44:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_line_len(t_game *game)
 
 	len = 0;
 	i = 0;
-	while (game->map[i])
+	while (i < game->height)
 	{
 		len = ft_strlen(game->map[i]);
 		if (len != game->width)

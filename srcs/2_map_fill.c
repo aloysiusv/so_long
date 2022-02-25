@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:36:36 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/24 04:32:10 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/02/25 04:35:24 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ static int	count_lines(char *filename)
 		nb_lines++;
 		free(line);
 	}
-	if (line != NULL)
-	{
-		if (*line != 0)
-			nb_lines++;
-	}
+	if (line != NULL && *line != 0)
+		nb_lines++;
 	free(line);
 	close(fd);
 	return (nb_lines);

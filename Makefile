@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 16:06:20 by lrandria          #+#    #+#              #
-#    Updated: 2022/02/24 14:57:22 by lrandria         ###   ########.fr        #
+#    Updated: 2022/02/25 00:36:30 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ all:			$(MLX) $(LFT) $(NAME) $(NAME_BONUS)
 
 $(NAME):		$(OBJS)
 				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
+
+mandatory:		$(MLX) $(LFT) $(NAME)
 
 bonus:			$(MLX) $(LFT) $(NAME_BONUS)
 
